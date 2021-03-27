@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:mda_atelier_flutter/create_menu_item_page.dart';
 import 'package:mda_atelier_flutter/menu_item_card.dart';
@@ -22,6 +23,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Menu'),
+        actions: [
+          CircleAvatar(
+            backgroundColor: Colors.grey,
+            child: InkWell(
+              onTap: () {
+                print('OK');
+              },
+              child: Badge(
+                badgeContent: Text('0', style: TextStyle(color: Colors.white, fontSize: 10.0),),
+                badgeColor: Colors.red,
+                child: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.black,
+                ),
+              )
+            ),
+          )
+        ],
       ),
       drawer: MyDrawer(
         onMenuItemAdded: onMenuItemAdded,

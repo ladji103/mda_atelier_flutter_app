@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ImageSelector extends StatefulWidget {
   final Function(String) onImageSelected;
@@ -10,7 +11,7 @@ class ImageSelector extends StatefulWidget {
 }
 
 class _ImageSelectorState extends State<ImageSelector> {
-  int selectedIndex = 1;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,18 @@ class _ImageSelectorState extends State<ImageSelector> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pop(context);
-          widget.onImageSelected(images[selectedIndex]);
+          if (selectedIndex > -1) {
+            Navigator.pop(context);
+            widget.onImageSelected(images[selectedIndex]);
+          } else {
+            Fluttertoast.showToast(
+                msg: 'Veuillez sélectionner une image',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          }
         },
         child: Icon(Icons.done),
         backgroundColor: Theme.of(context).accentColor,

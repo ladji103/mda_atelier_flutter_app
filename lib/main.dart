@@ -10,7 +10,7 @@ class MdaAtelierApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.orange, accentColor: Colors.green, primaryColor: Colors.orange),
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
